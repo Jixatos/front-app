@@ -5,6 +5,12 @@
       "nome": "Resident Evil 10",
       "preco": 150,
       "desc": "Jogo de Tiro single player"
+    },
+    {
+      "nome": "Mario",
+      "desc": "Jogo de Plataforma",
+      "preco": "100",
+      "id": 2
     }
   ]
 }

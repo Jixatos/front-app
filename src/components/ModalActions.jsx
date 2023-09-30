@@ -4,6 +4,9 @@ import styles from "../css/ModalActions.module.css";
 export default function ModalActions(props) {
   const id = props.id;
 
+  //Ternário emcima do id para determinar qual é o método que deve ser utilizado no modal.
+  let metodo = id ? "PUT" : "POST";
+
   const [produto, setProduto] = useState({
     id: props.id,
     nome: "",
@@ -34,16 +37,16 @@ export default function ModalActions(props) {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    //Realizando o Editar/UPDATE de fato para a API
-    fetch(`http://localhost:3000/produtos/${id}`, {
-        method: "PUT",
+    //Realizando o Editar/UPDATE e ou o Cadastrar/INSERT de fato para a API
+    fetch(`http://localhost:3000/produtos/${ id ? id:"" }`, {
+        method: metodo,
         headers: {
         "Content-Type": "application/json",
-        },
+      },
         body: JSON.stringify(produto)
-    })
-        .then((response) => console.log(response.status))
-        .catch((error) => console.log(error));
+      })
+      .then((response) => console.log(response.status))
+      .catch((error) => console.log(error));
     
     props.setOpen(false);
 
@@ -90,7 +93,7 @@ export default function ModalActions(props) {
                 />
               </div>
               <div>
-                <button>EDITAR</button>
+                <button>{id ? "EDITAR" : "CADASTRAR"}</button>
               </div>
             </fieldset>
           </form>
