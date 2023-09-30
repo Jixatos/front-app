@@ -1,9 +1,11 @@
 export default function ModalActions(props){
 
-
-    return(
-        <>
-            <h1>MODAL PRODUTOS</h1>
-        </>
-    )
+    if(props.open) {
+        return(
+            <>
+                <h1>MODAL PRODUTOS</h1>
+                <button onClick={()=> props.setOpen(false)}>CLOSE-MODAL</button>
+            </>
+        )
+    }
 }
